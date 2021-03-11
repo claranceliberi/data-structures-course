@@ -105,6 +105,10 @@ void displayMatrix(int rows, int cols){
 }
 
 
+void addMatrix (int rows, int cols){
+
+}
+
 int main(){
 
     int rows = 0;
