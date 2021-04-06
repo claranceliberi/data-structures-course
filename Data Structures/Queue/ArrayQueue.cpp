@@ -12,6 +12,12 @@ struct Queue{
 };
 
 
+/**
+ * creating Array que
+ *
+ * @param q : struct Queue
+ * @param size : int
+ */
 void create(struct Queue *q, int size){
     q->size = size;
     q->front = q->rear = -1;

@@ -7,7 +7,7 @@ using namespace std;
 
 //struct stop
 struct Stop {
-    string names ;
+    string names;
     double price;
     string arrival;
 
