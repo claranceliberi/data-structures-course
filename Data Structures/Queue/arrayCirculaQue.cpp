@@ -42,7 +42,7 @@ int enQueue(int *queue, int data){
 }
 
 //delete element from array
-int deQueue(int *queue){
+int deQueue(int *queue,int size){
     int element;
 
     if(isEmpty()){
@@ -58,8 +58,17 @@ int deQueue(int *queue){
         front = rear = -1;
     }
 
-    return element
+    return element;
+}
 
+void displayCQueue(int *queue,int size){
+    cout << "\n" << endl;
+
+    for (int i=front; i != (rear + 1) % size; i = (i + 1) % size){
+        cout << queue[i] ;
+        if(i < rear )
+            cout << ", ";
+    }
 }
 
 int main(){
@@ -68,7 +77,7 @@ int main(){
     enQueue(queue,4);
     enQueue(queue,1);
     enQueue(queue,23);
-
+    displayCQueue(queue,SIZE);
 //    cout << queue[0] << endl;
 //    cout << isFull() << " and " << isEmpty() << endl;
     return 0;
