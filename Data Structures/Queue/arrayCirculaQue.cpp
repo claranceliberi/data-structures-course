@@ -69,6 +69,7 @@ void displayCQueue(int *queue,int size){
         if(i < rear )
             cout << ", ";
     }
+    cout << endl;
 }
 
 int main(){
@@ -78,7 +79,12 @@ int main(){
     enQueue(queue,1);
     enQueue(queue,23);
     displayCQueue(queue,SIZE);
-//    cout << queue[0] << endl;
-//    cout << isFull() << " and " << isEmpty() << endl;
+    enQueue(queue,53);
+    enQueue(queue,25);
+    enQueue(queue,6);
+    displayCQueue(queue,SIZE);
+    deQueue(queue,SIZE);
+    deQueue(queue,SIZE);
+    displayCQueue(queue,SIZE);
     return 0;
 }
