@@ -26,6 +26,7 @@ int isEmpty(){
 
 // add element to que
 int enQueue(int *queue, int data){
+
     //check over flow
     if(isFull()){
         cout << "Queue overflow" << endl;
@@ -38,6 +39,27 @@ int enQueue(int *queue, int data){
     queue[rear] = data;
 
     return 1;
+}
+
+//delete element from array
+int deQueue(int *queue){
+    int element;
+
+    if(isEmpty()){
+        cout << "Queue underflow" << endl;
+        return -1;
+    }
+
+    element = queue[front];
+    front = (front + 1 ) % size;
+
+//    if que is left empty make front and real to -1
+    if(front == rear){
+        front = rear = -1;
+    }
+
+    return element
+
 }
 
 int main(){
