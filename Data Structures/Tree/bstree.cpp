@@ -15,6 +15,8 @@ class BST{
         void Inorder(BST*);
 
         void max(BST*);
+
+        int height(BST*);
 };
 
 
@@ -62,6 +64,17 @@ void BST::max(BST* root){
     cout << "Max : " << bst->data << endl;
 }
 
+int BST::height(BST* root){
+    if(!root){
+        return 0;
+    } else {
+        int lb = height(root->left);
+        int rb = height(root->right);
+        
+        return std::max(lb,rb) + 1;
+    }
+}
+
 int main()
 {
     BST b, *root = NULL;
@@ -74,6 +87,7 @@ int main()
     b.Insert(root, 80);
 
     b.max(root);
+    cout << "height : " << b.height(root) << endl;
     b.Inorder(root);
     return 0;
 }
