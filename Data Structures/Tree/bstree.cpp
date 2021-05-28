@@ -13,6 +13,8 @@ class BST{
         BST* Insert(BST*, int);
 
         void Inorder(BST*);
+
+        void max(BST*);
 };
 
 
@@ -52,6 +54,14 @@ void BST::Inorder(BST* root){
     Inorder(root->right);
 }
 
+void BST::max(BST* root){
+    BST* bst  = root;
+
+    while(bst->right) bst = bst->right;
+
+    cout << "Max : " << bst->data << endl;
+}
+
 int main()
 {
     BST b, *root = NULL;
@@ -62,7 +72,8 @@ int main()
     b.Insert(root, 70);
     b.Insert(root, 60);
     b.Insert(root, 80);
- 
+
+    b.max(root);
     b.Inorder(root);
     return 0;
 }
