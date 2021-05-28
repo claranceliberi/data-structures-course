@@ -16,6 +16,8 @@ class BST{
 
         void max(BST*);
 
+        void min(BST*);
+
         int height(BST*);
 };
 
@@ -64,13 +66,21 @@ void BST::max(BST* root){
     cout << "Max : " << bst->data << endl;
 }
 
+void BST::min(BST* root){
+    BST* bst  = root;
+
+    while(bst->left) bst = bst->left;
+
+    cout << "Min : " << bst->data << endl;
+}
+
 int BST::height(BST* root){
     if(!root){
         return 0;
     } else {
         int lb = height(root->left);
         int rb = height(root->right);
-        
+
         return std::max(lb,rb) + 1;
     }
 }
@@ -87,6 +97,7 @@ int main()
     b.Insert(root, 80);
 
     b.max(root);
+    b.min(root);
     cout << "height : " << b.height(root) << endl;
     b.Inorder(root);
     return 0;
