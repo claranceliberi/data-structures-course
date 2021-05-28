@@ -14,11 +14,13 @@ class BST{
 
         void Inorder(BST*);
 
-        void max(BST*);
+        BST* max(BST*);
 
-        void min(BST*);
+        BST* min(BST*);
 
         int height(BST*);
+
+        BST* deleteNode(BST*, int);
 };
 
 
@@ -58,20 +60,24 @@ void BST::Inorder(BST* root){
     Inorder(root->right);
 }
 
-void BST::max(BST* root){
+BST* BST::max(BST* root){
     BST* bst  = root;
 
     while(bst->right) bst = bst->right;
 
     cout << "Max : " << bst->data << endl;
+
+    return bst;
 }
 
-void BST::min(BST* root){
+BST* BST::min(BST* root){
     BST* bst  = root;
 
     while(bst->left) bst = bst->left;
 
     cout << "Min : " << bst->data << endl;
+
+    return bst;
 }
 
 int BST::height(BST* root){
@@ -83,6 +89,35 @@ int BST::height(BST* root){
 
         return std::max(lb,rb) + 1;
     }
+}
+
+BST* BST::deleteNode(BST* root, int key){
+    if(!root) return NULL;
+
+    if(key < root->data){
+        root->left = BST::deleteNode(root->left,key);
+    } else if (key > root->data){
+        root->right = BST::deleteNode(root->right,key);
+    } else {
+        if(!root->left){
+            BST* temp = root->right;
+            delete(root);
+            return temp;
+        } else if(!root->right){
+            BST* temp = root->left;
+            delete(root);
+            return temp;
+        }
+
+        BST* temp  = BST::min(root->right);
+
+        root->data = root->data;
+
+        root->right = deleteNode(root->right, temp->data); 
+
+    }
+
+    return root;
 }
 
 int main()
@@ -99,6 +134,9 @@ int main()
     b.max(root);
     b.min(root);
     cout << "height : " << b.height(root) << endl;
+    b.Inorder(root);
+    b.deleteNode(root,60);
+    cout << endl << endl;
     b.Inorder(root);
     return 0;
 }
