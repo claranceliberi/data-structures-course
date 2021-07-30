@@ -6,13 +6,13 @@ using namespace std;
 
 void BinarySearch(int array[],int value){
 	int begin=0,end=sizeof(array),position=-1,mid;
-  
-  while(begin<=end){ 
-      mid=(begin+end)/2;
-   if(array[mid]==value){
-	 position=mid;
-	 cout<<"SUCCESSFULLY SEARCH \n FOUND ON INDEX: "<<position<<endl;
-	 exit(0);
+
+	while(begin<=end){ 
+		mid=(begin+end)/2;
+	if(array[mid]==value){
+		position=mid;
+		cout<<"SUCCESSFULLY SEARCH \n FOUND ON INDEX: "<<position<<endl;
+		exit(0);
     }
 else if(array[mid]>value){
 	end=mid-1;
