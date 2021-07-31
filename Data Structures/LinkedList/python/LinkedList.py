@@ -34,6 +34,20 @@ class LinkedList:
 
             list.next = new_node
 
+    def insert_after_data(self,data_to_search,data_to_insert):
+        list : Node = self.head
+        new_node = Node(data_to_insert)
+
+        if self.head is None:
+            print('linked list is null')
+        else:
+            while list is not None:
+                if list.item == data_to_search :
+                    new_node.next = list.next
+                    list.next = new_node
+                    break
+                list = list.next
+
 
 
 if __name__ == "__main__":
@@ -45,7 +59,7 @@ if __name__ == "__main__":
 
     
     while(toContinue):
-        print (" 1. show \n 2. insert at beginning \n 3. insert at end  \n 4. exit \n \n \n")
+        print (" 1. show \n 2. insert at beginning \n 3. insert at end  \n 4. insert after \n 5. exit \n \n \n")
         choice = int(input("Enter choice : "))
 
         if choice == 1:
@@ -57,6 +71,10 @@ if __name__ == "__main__":
             data = input("enter data : ")
             linked_list.insert_at_end(data)
         elif choice == 4 : 
+            search_data = input("enter data to insert after : ")
+            data = input("enter data : ")
+            linked_list.insert_after_data( search_data,data)
+        elif choice == 5 : 
             toContinue = False
         else :
             print(' wront choice try again \n\n')
