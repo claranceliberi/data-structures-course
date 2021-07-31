@@ -2,7 +2,7 @@
 class Node: 
     def __init__(self,item):
         self.item = item
-        self.next = None
+        self.next : Node = None
  
 class LinkedList:
     
@@ -13,9 +13,15 @@ class LinkedList:
     def show_list(self ):
         print_list : Node = self.head
 
-        while print_list is not None:
-            print(print_list.item)
-            print_list = print_list.next
+        if self.head is None:
+            print("linked list is empty")
+        else:
+            while print_list is not None:
+                if print_list.next is not None:
+                    print(print_list.item, end=" -> ")
+                else: 
+                    print(print_list.item)
+                print_list = print_list.next
 
     def insert_at_beg(self,data ):
         new_node = Node(data)
@@ -49,6 +55,22 @@ class LinkedList:
                 list = list.next
 
 
+    def remove_by_value(self, data):
+        headNode : Node = self.head
+        
+        if self.head is None:
+            print('linked list is null')
+        else:
+            
+            while headNode is not None:
+                if headNode.item == data :
+                    break
+                prev = headNode
+                headNode = headNode.next
+
+            # unlink nodes and set the node to null/None
+            prev.next = headNode.next
+            headNode = None
 
 if __name__ == "__main__":
     linked_list = LinkedList()
@@ -59,7 +81,7 @@ if __name__ == "__main__":
 
     
     while(toContinue):
-        print (" 1. show \n 2. insert at beginning \n 3. insert at end  \n 4. insert after \n 5. exit \n \n \n")
+        print (" 1. show \n 2. insert at beginning \n 3. insert at end  \n 4. insert after \n 5. remove \n 6. exit \n \n \n")
         choice = int(input("Enter choice : "))
 
         if choice == 1:
@@ -75,6 +97,9 @@ if __name__ == "__main__":
             data = input("enter data : ")
             linked_list.insert_after_data( search_data,data)
         elif choice == 5 : 
+            data = input("enter data : ")
+            linked_list.remove_by_value(data)
+        elif choice == 6 : 
             toContinue = False
         else :
             print(' wront choice try again \n\n')
