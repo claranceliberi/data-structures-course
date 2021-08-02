@@ -28,7 +28,7 @@ class Node:
         else:
             self.data = data
 
-    
+    # print left -> data -> right
     def inOrderTraversal(self, root):
         res = []
 
@@ -39,6 +39,18 @@ class Node:
 
         return res
 
+    # print root -> left -> right
+    def preOrderTraversal(self, root): 
+        res = []
+
+        if root:
+            res.append(root.data)
+            res = res + root.preOrderTraversal(root.left)
+            res = res + root.preOrderTraversal(root.right)
+        
+        return res
+
+    
 
 if __name__ == "__main__":
     tree = Node(12)
@@ -47,5 +59,7 @@ if __name__ == "__main__":
     tree.insert(3)
     tree.insert(2)
     tree.insert(7)
-    tree.printData()
-    print(tree.inOrderTraversal(tree))
+    # tree.printData()
+    # print(tree.inOrderTraversal(tree))
+    print(tree.preOrderTraversal(tree))
+    
