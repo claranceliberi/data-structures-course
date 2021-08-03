@@ -50,7 +50,14 @@ class Node:
         
         return res
 
-    
+    # print right -> left -> root
+    def postOrderTraversal(self, root):
+        res= []
+
+        if root: 
+            res = root.postOrderTraversal(root.right)
+            res = res + root.postOrderTraversal(root.left)
+            res = res.append(root.data)
 
 if __name__ == "__main__":
     tree = Node(12)
